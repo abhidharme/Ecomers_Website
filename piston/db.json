@@ -1,0 +1,16 @@
+{
+  "cart": [
+    {
+      "id": 51,
+      "title": "Leather Retail",
+      "color": "Brown",
+      "gender": "female",
+      "category": "Jacket",
+      "cate": "Jack",
+      "description": "Solid Leather Jacket",
+      "price": "2699",
+      "rating": "4.4",
+      "image": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/14455420/2021/6/23/37bff78e-cce8-46de-9648-9d5be1d0eaf51624446043415-Leather-Retail-Women-Brown-Solid-Lightweight-Leather-Jacket--1.jpg"
+    }
+  ]
+}
