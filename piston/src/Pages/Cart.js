@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Box,
   Heading,
@@ -23,28 +23,61 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../Components/Navbar'
-import { deleteProduct } from '../Redux/Add_To_Cart/action'
+import { deleteProduct, patchProduct } from '../Redux/Add_To_Cart/action'
 import { AddIcon , MinusIcon } from '@chakra-ui/icons'
+import Checkout from '../Components/Checkout'
+import LoadingCart from '../Components/LoadingCart'
 
 
 export const Cart = () => {
 
-  const { cart } = useSelector((state) => state.cart)
-  console.log(cart)
+  var { cart } = useSelector((state) => state.cart)
+const [quantity , setQuantity ] = useState(1);
+
   const dispatch = useDispatch();
+  
+  
+//  const uniqueIds = [];
+
+// cart = cart.filter(element => {
+//   const isDuplicate = uniqueIds.includes(element.currentProduct.id);
+
+//   if (!isDuplicate) {
+//     uniqueIds.push(element.currentProduct.id);
+
+//     return true;
+//   }
+
+//   return false;  
+// });
+
+// console.log(cart);
+
 
 
   const removeItem = (id) => {
     dispatch(deleteProduct(id))
   }
 
+
+  const AddQtyItem = (id) => {
+    setQuantity(quantity+1)
+    dispatch(patchProduct(id,quantity))
+  }
+
+  const DecreQtyItem = (id) => {
+    if(quantity>1){
+      setQuantity(quantity-1)
+    }
+    dispatch(patchProduct(id,quantity))
+  }
+
   return (
     <>
-      <Box><Navbar /></Box>
       <Box>
-        <Heading as="h2" size="xl" textAlign="center" >
-          Cart
-        </Heading>
+      <LoadingCart/>
+      <Navbar /></Box>
+      <Box>
         {/* {cart.length && cart.map(product => {
         return <CartItems key={product.id}
         id={product.id}
@@ -55,7 +88,6 @@ export const Cart = () => {
       })}*/}
         <Box>
           <Table>
-          <TableCaption>CART</TableCaption>
             <Thead>
               <Tr >
                 <Th>Item Image</Th>
@@ -75,20 +107,20 @@ export const Cart = () => {
                         height={150}
                         width={150}
                         objectFit={'contain'}
-                        src={el.image}
+                        src={el.currentProduct.image}
                       />
                     </td></Link>
-                    <Td><h5>{el.title}</h5></Td>
+                    <Td><h5>{el.currentProduct.title}</h5></Td>
                     <Td>
                     <Box>
                     <Flex>
-                    <Box><Button borderTopRightRadius="0" borderBottomRightRadius="0"  ><MinusIcon/></Button></Box>
-                    <Box><Button as={"Text"} borderRadius="0">50</Button></Box>
-                    <Box><Button borderTopLeftRadius="0" borderBottomLeftRadius="0"><AddIcon/></Button></Box>
+                    {el.quantity != 1 ?                     <Box><Button borderTopRightRadius="0" borderBottomRightRadius="0" onClick={()=>DecreQtyItem(el.id)}  ><MinusIcon/></Button></Box> : <Box><Button isDisabled borderTopRightRadius="0" borderBottomRightRadius="0" onClick={()=>DecreQtyItem(el.id)}  ><MinusIcon/></Button></Box>}
+                    <Box><Button as={"Text"} borderRadius="0">{el.quantity}</Button></Box>
+                    <Box><Button borderTopLeftRadius="0" borderBottomLeftRadius="0" onClick={()=>AddQtyItem(el.id)}><AddIcon/></Button></Box>
                     </Flex>
                     </Box>
                     </Td>
-                    <Td><h5>${el.price}</h5></Td>
+                    <Td><h5>${el.currentProduct.price*el.quantity}</h5></Td>
                     <Td ><Button onClick={() => removeItem(el.id)}
                     >
                       <DeleteIcon />
@@ -99,22 +131,7 @@ export const Cart = () => {
             </Tbody>
           </Table>
         </Box>
-        <Button
-          rounded={'none'}
-          w={'full'}
-          mt={8}
-          size={'lg'}
-          py={'7'}
-          bg={useColorModeValue('gray.900', 'gray.50')}
-          color={useColorModeValue('white', 'gray.900')}
-          textTransform={'uppercase'}
-          _hover={{
-            transform: 'translateY(2px)',
-            boxShadow: 'lg',
-          }}
-        >
-          CHECKOUT
-        </Button>
+        <Box><Checkout cart={cart} /></Box>
       </Box>
     </>
   )

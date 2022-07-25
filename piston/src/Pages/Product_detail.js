@@ -11,10 +11,14 @@ import {
   SimpleGrid,
   StackDivider,
   useColorModeValue,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from '@chakra-ui/react';
 import { MdLocalShipping } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect , useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { getSingleProduct } from '../Redux/Single_Product/action';
@@ -27,6 +31,9 @@ export const Product_detail = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+const [quantity , setQuantity ] = useState(1);
+
+var { cart } = useSelector((state) => state.cart)
 
   const  {currentProduct}  = useSelector((store) => store.singleprod)
 // console.log(currentProduct)
@@ -40,14 +47,40 @@ useEffect(() => {
 }, [dispatch, id])
 
 const addCart = ()=>{
-  currentProduct && dispatch(addProduct(currentProduct))
+ const data = {
+    currentProduct,
+    quantity
+  }
+  var d = false;
+
+  var exist = cart.map((x)=>{
+    if(x.currentProduct.id == currentProduct.id){
+       return d = true;
+    }
+  })
+  
+  if(d){
+    return(
+      alert("Already Added to Cart")
+    )
+  }
+  else{
+    currentProduct && dispatch(addProduct(data))
 }
+  
+   //console.log(exist)
+   
+}
+
+
 
 
 
   return (
     <>
-    <Box><Navbar/></Box>
+    <Box>
+    
+    <Navbar/></Box>
     <Container maxW={'7xl'}>
     <SimpleGrid
       columns={{ base: 1, lg: 2 }}

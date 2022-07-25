@@ -6,6 +6,7 @@ import Navbar from '../Navbar';
 import { Box , HStack  , Select ,Stack , Text , Heading , Image , useColorModeValue , Center , Flex , } from '@chakra-ui/react';
 import Jacket_Filter from '../Filters/Jacket_Filter';
 import Footer from '../Footer';
+import LoadingCategory from '../LoadingCategory';
 
 
 
@@ -58,7 +59,9 @@ const dispatch = useDispatch()
 
   return (
      <Box  bg='gray.100'>
-     <Box ><Navbar/></Box>
+     <Box >
+     <LoadingCategory/>
+     <Navbar/></Box>
      <Box> <Flex spacing='0px'>
      <Box width="20%" bg={useColorModeValue('gray.50', 'gray.900')}
      color={useColorModeValue('gray.700', 'gray.200')}   >

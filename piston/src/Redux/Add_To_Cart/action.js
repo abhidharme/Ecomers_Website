@@ -15,9 +15,9 @@ const add_cart_Failure = (Payload) => ({
     Payload
 })
 
- const addProduct = (product) => (dispatch) => {
+ const addProduct = (data) => (dispatch) => {
     dispatch(add_cart_Request());
-    axios.post(`http://localhost:3008/cart`, product)
+    axios.post(`http://localhost:3008/cart`, data)
         .then((r) => dispatch(add_cart_Success(r.data)))
         .then((res)=>dispatch(fetchCartData()))
         .catch((e) => dispatch(add_cart_Failure(e.message)))
@@ -70,4 +70,27 @@ const deleteProduct = (id)=> (dispatch)=>{
 }
 
 
-export {addProduct , fetchCartData , deleteProduct}
+const patch_cart_Request = () => ({
+    type: types.PATCH_CART_REQUEST
+})
+
+const patch_cart_Success = (Payload) => ({
+    type: types.PATCH_CART_SUCCESS,
+    Payload
+})
+
+const patch_cart_Failure = () => ({
+    type: types.PATCH_CART_FAILURE
+})
+
+ const patchProduct = (id,data) => (dispatch) => {
+    dispatch(patch_cart_Request());
+    axios.patch(`http://localhost:3008/cart/${id}`,
+    {quantity:`${data}`}
+    )
+        .then((r) => dispatch(patch_cart_Success(r.data)))
+        .then((res)=>dispatch(fetchCartData()))
+        .catch((e) => dispatch(patch_cart_Failure(e.message)))
+}
+
+export {addProduct , fetchCartData , deleteProduct , patchProduct}

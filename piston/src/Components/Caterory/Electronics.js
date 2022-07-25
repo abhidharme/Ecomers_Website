@@ -3,9 +3,10 @@ import { useDispatch , useSelector } from 'react-redux';
 import { fetchProdCategory } from '../../Redux/Products_Category/action';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import { Box , HStack  , Select ,Stack , Text , Heading , Image , useColorModeValue , Center , Flex , } from '@chakra-ui/react';
+import { Box ,HStack  , Select ,Stack , Text , Heading , Image , useColorModeValue , Center , Flex , } from '@chakra-ui/react';
 import Ele_Filter from '../Filters/Ele_Filter';
 import Footer from '../Footer';
+import LoadingCategory from '../LoadingCategory';
 
 
 
@@ -59,7 +60,9 @@ const dispatch = useDispatch()
 
   return (
      <Box  bg='gray.100'>
-     <Box ><Navbar/></Box>
+     <Box >
+     <LoadingCategory/>
+     <Navbar/></Box>
      <Box> <Flex spacing='0px'>
      <Box width="20%"    bg={useColorModeValue('gray.50', 'gray.900')}
      color={useColorModeValue('gray.700', 'gray.200')} >
@@ -84,6 +87,7 @@ const dispatch = useDispatch()
           return (
             <ProductSimple
             key={i}
+            id={product.id}
             image={product.image}
             title={product.title}
             price={product.price}/>
@@ -104,9 +108,10 @@ const dispatch = useDispatch()
 
 
 
-function ProductSimple({key , image, title , price}) {
+function ProductSimple({key ,id, image, title , price}) {
   return (
     <Center py={12}>
+    <Link style={{textDecoration:"none" }} to={`/details/${id}`} >
       <Box
         role={'group'}
         p={6}
@@ -162,6 +167,7 @@ function ProductSimple({key , image, title , price}) {
           </Stack>
         </Stack>
       </Box>
+      </Link>
     </Center>
   );
 }

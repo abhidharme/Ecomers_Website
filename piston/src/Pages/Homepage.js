@@ -16,6 +16,7 @@ import { AllProducts } from '../Components/ALLProducts';
 import { Paginationp } from '../Components/Paginationp';
 import { CategoryList } from '../Components/CategoryList';
 import Footer from '../Components/Footer';
+import Loading from '../Components/Loading';
 
 
 
@@ -23,6 +24,7 @@ import Footer from '../Components/Footer';
 export const Homepage = () => {
   return (
     <div>
+    <Loading/>
     <Navbar/>
     <br></br>
     <HStack spacing='25px'>

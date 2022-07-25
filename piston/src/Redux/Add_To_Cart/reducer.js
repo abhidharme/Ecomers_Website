@@ -63,6 +63,24 @@ export const cartreducer = (store = initialState  ,{type , Payload}) =>{
                     loading: false,
                     error: true
                 }
+                case types.PATCH_CART_REQUEST:
+                    return {
+                        ...store,
+                        loading: true,
+                        error: false
+                    }
+                case types.PATCH_CART_SUCCESS:
+                    return {
+                        ...store,
+                        loading: false,
+                        error: false
+                    }
+                case types.PATCH_CART_FAILURE:
+                    return {
+                        ...store,
+                        loading: false,
+                        error: true
+                    }
     default:
         return store;
       }

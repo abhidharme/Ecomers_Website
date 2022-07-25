@@ -16,7 +16,7 @@ const fetchProductsFailure = ()=> ({
 
 export const fetchProducts = (Payload)=> (dispatch)=> {
     dispatch(fetchProductsRequest());
-    axios.get('https://ecom-data-project.herokuapp.com/prods',{
+    axios.get('https://ecom-data-project.herokuapp.com/prods?_limit=9',{
         params: {
             ...Payload
         }
