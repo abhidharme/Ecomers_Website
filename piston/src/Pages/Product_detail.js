@@ -11,10 +11,9 @@ import {
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
+  useToast,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 import { MdLocalShipping } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
@@ -24,6 +23,7 @@ import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { getSingleProduct } from '../Redux/Single_Product/action';
 import Navbar from '../Components/Navbar';
 import { addProduct } from '../Redux/Add_To_Cart/action';
+import LoadingDetails from '../Components/LoadingDetails';
 
 
 
@@ -36,7 +36,7 @@ const [quantity , setQuantity ] = useState(1);
 var { cart } = useSelector((state) => state.cart)
 
   const  {currentProduct}  = useSelector((store) => store.singleprod)
-// console.log(currentProduct)
+  const toast = useToast()
 
 
 
@@ -46,7 +46,7 @@ useEffect(() => {
   }
 }, [dispatch, id])
 
-const addCart = ()=>{
+const addCart = (pop)=>{
  const data = {
     currentProduct,
     quantity
@@ -58,20 +58,35 @@ const addCart = ()=>{
        return d = true;
     }
   })
+ 
   
   if(d){
-    return(
-      alert("Already Added to Cart")
-    )
+    function pop(){
+     
+      return toast({
+         title: `Product is Already Available in Cart`,
+         position: 'top',
+         isClosable: true,
+       })
+     }
+      pop()
   }
   else{
+    function pop(){
+     
+      return toast({
+         title: ` Successfully Added to Cart`,
+         position: 'top',
+        status: "success",
+        isClosable: true,
+       })
+     }
+      pop()
     currentProduct && dispatch(addProduct(data))
 }
-  
-   //console.log(exist)
-   
 }
 
+   
 
 
 
@@ -79,7 +94,8 @@ const addCart = ()=>{
   return (
     <>
     <Box>
-    
+
+    <LoadingDetails/>
     <Navbar/></Box>
     <Container maxW={'7xl'}>
     <SimpleGrid
@@ -197,4 +213,27 @@ return (
       })}
   </Box>
 );
+}
+
+function PositionExample() {
+  const toast = useToast()
+
+  const pop = ()=>{
+     
+    toast({
+      title: `toast`,
+      position: 'top',
+      isClosable: true,
+    })
+  }
+
+
+  return (
+    <Wrap>
+    <WrapItem>
+        <Button onClick={pop()}>ksa</Button> 
+
+    </WrapItem>
+</Wrap>
+  )
 }

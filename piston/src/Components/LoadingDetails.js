@@ -15,7 +15,7 @@ import {
   import React from 'react'
   import {useSelector} from "react-redux"
 
-  function LoadingCategory() {
+  function LoadingDetails() {
     const OverlayOne = () => (
 
       
@@ -30,8 +30,7 @@ import {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
-  const {loading} = useSelector((store)=>store.prodcategory)
-  const  {loading:load}  = useSelector((store) => store.singleprod)
+  const  {loading}  = useSelector((store) => store.singleprod)
 
 
   
@@ -51,4 +50,4 @@ import {
       </>
     )
   }
-  export default LoadingCategory;
+  export default LoadingDetails;

@@ -2,51 +2,38 @@
   "cart": [
     {
       "currentProduct": {
-        "id": 54,
-        "title": "Tokyo Talkies",
-        "color": "Black",
-        "gender": "female",
-        "category": "Jacket",
-        "cate": "Jack",
-        "description": "Puffer Jacket",
-        "price": "1099",
-        "rating": "4.1",
-        "image": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/15927640/2021/10/26/4cd42dc9-d96a-4e2e-89eb-6df0e8b393c81635232658135TokyoTalkiesWomenBlackPufferJacket1.jpg"
-      },
-      "quantity": "1",
-      "id": 2
-    },
-    {
-      "currentProduct": {
-        "id": 58,
-        "title": "Roadster",
-        "color": "Blue",
-        "gender": "female",
-        "category": "Jacket",
-        "cate": "Jack",
-        "description": "",
-        "price": "919",
-        "rating": "4.5",
-        "image": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/12178110/2020/9/15/32a696c1-e454-46bd-ab81-2705423e363e1600147562895-Roadster-Women-Jackets-2251600147560316-1.jpg"
-      },
-      "quantity": "1",
-      "id": 3
-    },
-    {
-      "currentProduct": {
-        "id": 41,
-        "title": "Campus Sutra",
-        "color": "Black",
+        "id": 1222223335,
+        "categories": "shirt",
+        "size": "Sizes : 39, 40, 42, 44...",
+        "title": "Men Navy Blue Solid Slim Fit Chino Shorts",
+        "price": "686",
         "gender": "men",
-        "category": "Jacket",
-        "cate": "Jack",
-        "description": "Men Solid Bomber Jacket",
-        "price": "1249",
-        "rating": "3.9",
-        "image": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2019/10/23/81b33604-9e09-40c7-bcca-2e48e0dfa7aa1571822670368-1.jpg"
+        "description": "",
+        "brand": "Dressberry",
+        "color": "black",
+        "discount": 45,
+        "off_price": 1249,
+        "image": "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2018/12/7/76a1fe8c-86c9-4ff1-bd68-2d333cfc03831544132056588-1.jpg",
+        "rating": 4.9,
+        "count": 29
       },
-      "quantity": 1,
-      "id": 4
+      "quantity": "1",
+      "id": 7
+    },
+    {
+      "currentProduct": {
+        "id": 8882328,
+        "title": "Pro 3 Smartwatch  ",
+        "color": "Black",
+        "gender": "Both",
+        "category": "electrnics",
+        "description": "You can easily keep a track of your daily activities, heart rate, sleep cycles, stress levels, and more by getting the Noise ColorFit Pro 3 smartwatch. The large 3.94 cm (1.55) TFT touchscreen displays every visual vividly so that you can check the time and your fitness statistics with ease. What’s more, this smartwatch can easily handle water splashes as it has a 5ATM rating.",
+        "price": 1199,
+        "rating": 4.6,
+        "image": "https://rukminim1.flixcart.com/image/416/416/knrsjgw0/smartwatch/5/n/y/wrb-sw-colorfitpro3-std-blk-blk-android-ios-noise-original-imag2drhhygt3ggz.jpeg?q=70"
+      },
+      "quantity": "1",
+      "id": 8
     }
   ],
   "payment": [
