@@ -8,9 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Pay() {
   const [product] = React.useState({
-    name: "Tesla Roadster",
-    price: 64998.67,
-    description: "Cool car"
+    name: "Ecomers",
+    price: 0,
+    description: ""
   });
 
   async function handleToken(token, addresses) {
@@ -34,7 +34,7 @@ export default function Pay() {
         stripeKey="pk_live_51LP26dSBRAW33Jd3AquO7Oo1UqEj9gQojVnldSfRzETjS8be7TMPB2qcIYrxcN7OmzAJROPrTbb1eGjN59YLKxUc00BnO0EK6F"
         token={handleToken}
         amount={product.price * 100}
-        name="Tesla Roadster"
+        name="Ecommers"
         billingAddress
         shippingAddress
       />

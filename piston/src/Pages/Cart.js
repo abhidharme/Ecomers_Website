@@ -36,7 +36,7 @@ const [quantity , setQuantity ] = useState(1);
 
   const dispatch = useDispatch();
   
-  
+  console.log(cart)
 //  const uniqueIds = [];
 
 // cart = cart.filter(element => {

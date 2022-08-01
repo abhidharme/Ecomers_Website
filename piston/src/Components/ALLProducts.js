@@ -6,6 +6,7 @@ import { CircularProgress } from '@chakra-ui/react'
 
 import {Stack , Text , Heading , Image , useColorModeValue , Center , Flex , } from '@chakra-ui/react'
 import { fetchProducts } from '../Redux/Products/action'
+import { Link } from 'react-router-dom'
 // import { useSearchParams } from 'react-router-dom'
 
 
@@ -37,6 +38,7 @@ export const AllProducts = () => {
           return (
             <ProductSimple
             key={i}
+            id={product.id}
             image={product.image}
             title={product.title}
             price={product.price}/>
@@ -50,9 +52,10 @@ export const AllProducts = () => {
 }
 
 
-function ProductSimple({key , image, title , price}) {
+function ProductSimple({key ,id, image, title , price}) {
   return (
     <Center py={12}>
+    <Link style={{textDecoration:"none" }} to={`/details/${id}`} > 
       <Box
         role={'group'}
         p={6}
@@ -108,6 +111,7 @@ function ProductSimple({key , image, title , price}) {
           </Stack>
         </Stack>
       </Box>
+      </Link>
     </Center>
   );
 }
