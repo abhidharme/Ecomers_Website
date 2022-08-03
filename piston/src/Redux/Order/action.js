@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 
- 
+
 
 const fetch_order_Request = () => ({
     type: types.FETCH_ORDER_REQUEST
@@ -24,5 +24,5 @@ export const fetchOrderData = () => (dispatch) => {
         .catch((err) => dispatch(fetch_order_Failure(err.data)))
 
 }
- 
+
 
