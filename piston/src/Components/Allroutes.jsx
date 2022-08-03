@@ -27,9 +27,11 @@ export const Allroutes = () => {
   return (
     <>
     <Routes>
-    <Route path="/" element={
-      <PrivateRoute isAuthenticated={isAuthenticated}><Homepage/></PrivateRoute>} />
-    <Route path='/cart' element={<Cart/>} />
+    <Route path="/cart" element={
+      <PrivateRoute isAuthenticated={isAuthenticated}><Cart/></PrivateRoute>} />
+      <Route path="/orders" element={
+        <PrivateRoute isAuthenticated={isAuthenticated}><Orders/></PrivateRoute>} />
+    <Route path='/' element={<Homepage/>} />
     <Route path='/jwellary' element={<Jwellary/>} />
     <Route path='/tshirt' element={<Tshirt/>} />
     <Route path='/electronics' element={<Electronics/>} />
@@ -37,7 +39,6 @@ export const Allroutes = () => {
     <Route path='/shoes' element={<Shoes/>} />
     <Route path='/details/:id' element={<Product_detail/>} />
     <Route path='/payment' element={<PaymentPage/>} />
-    <Route path='/orders' element={<Orders/>} />
     <Route path='/signup' element={<SignUp/>} />
     <Route path='/login' element={<Login/>} />
     </Routes>

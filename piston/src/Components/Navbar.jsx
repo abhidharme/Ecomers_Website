@@ -19,7 +19,7 @@ import {
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { CartCounter } from './CartCounter';
 import { BsCart4 } from "react-icons/bs"
-import { Link as RouteLink , useNavigate} from 'react-router-dom';
+import { Link as RouteLink, useNavigate } from 'react-router-dom';
 import { Profile } from './Profile';
 import { useDispatch } from 'react-redux';
 import { logout } from '../Redux/LoginRedux/action';
@@ -27,23 +27,23 @@ import { logout } from '../Redux/LoginRedux/action';
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   //const { isOpen, onOpen, onClose } = useDisclosure();
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navi = useNavigate();
 
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box onClick={()=>navi('/')}>
-          <Image
-          objectFit={'cover'}
-          rounded={'lg'}
-           src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKgHIi3kFm58QXqi4E1JZScbG9RSkXGgs5uGb9iu1OXC3bnKbLCU3hWafR9zIZkiQ0_dA&usqp=CAU' w="100px" h="60px" />
+          <Box onClick={() => navi('/')}>
+            <Image
+              objectFit={'cover'}
+              borderRadius='full'
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFmfbD6sQJK9voNucCp4HYTU_7LfZd72LffQ&usqp=CAU' w="50px" h="50px" />
           </Box>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-            
+
               <Button>
                 <Link as={RouteLink} to="/cart">
                   <Box position="relative" padding="0 0.5rem 0 0">
@@ -79,13 +79,12 @@ export default function Navbar() {
                   </Center>
                   <br />
                   <Center>
-                    <p><Profile/></p>
+                    <p><Profile /></p>
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Your Orders</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem onClick={()=>{dispatch(logout());navi('/login')}}>Logout</MenuItem>
+                  <MenuItem onClick={() => navi("/orders")} >Your Orders</MenuItem>
+                  <MenuItem onClick={() => { dispatch(logout()); navi('/login') }}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>

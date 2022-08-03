@@ -14,22 +14,27 @@ export default function Pay() {
 
 const [datat , setDatat ] = useState([]);
 
-var X = cart.length;
 
-const addorders = ()=>{
-  for(var i=0 ; i<X ; i++){
-    datat.push(cart[i])
-  }
-
-}
-    
+    //console.log(cart)
   
+var X = cart.map((e)=>{
+  return e.currentProduct.title
+})
+// var Y = cart.map((e)=>{
+//   return e.currentProduct.image
+// })
+
+var Z = cart.reduce((sum,curr)=>{
+  var val = Number(curr.currentProduct.price)
+  sum =  sum+val
+   return sum
+},0)
 
  
   const [product] = React.useState({
     name: "Ecomers",
-    price: 28,
-    description: datat
+    price: Number(Z),
+    description: X
   });
 
   async function handleToken(token, addresses) {
@@ -48,13 +53,13 @@ const addorders = ()=>{
 
   return (
     <div>
-    <h1>Total Price = {product.price * 100}</h1>
+    <h1>Total Price = {product.price}</h1>
     <br></br>
       <StripeCheckout
         style={{ width:"240px" , height:"40px" }}
         stripeKey="pk_live_51LP26dSBRAW33Jd3AquO7Oo1UqEj9gQojVnldSfRzETjS8be7TMPB2qcIYrxcN7OmzAJROPrTbb1eGjN59YLKxUc00BnO0EK6F"
         token={handleToken}
-        amount={product.price * 100}
+        amount={product.price}
         name="Ecommers"
         billingAddress
         shippingAddress

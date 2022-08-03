@@ -26,7 +26,7 @@ export const Profile = () => {
     .catch((err) => console.log(err));
 },[]);
 
-console.log(profile)
+//console.log(profile)
 
   return (
     <div>
