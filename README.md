@@ -15,7 +15,7 @@ It is a web application to buy cloths , jwellary , electronics , and shoes etc p
 - Card payment method is available.
 
 ### Tech Stack
-React | CSS3 | Javascript | Redux | Material UI
+React | Redux | Javascript | HTML | CSS | Chakra-ui | Redux-thunk 
 
 ### Website flow for User
 - Home page
