@@ -35,7 +35,7 @@ export default function Navbar() {
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box onClick={() => navi('/')}>
-            <Image
+            <Image cursor={'pointer'}
               objectFit={'cover'}
               borderRadius='full'
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFmfbD6sQJK9voNucCp4HYTU_7LfZd72LffQ&usqp=CAU' w="50px" h="50px" />
