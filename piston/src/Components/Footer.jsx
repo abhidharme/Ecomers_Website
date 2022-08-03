@@ -10,6 +10,7 @@ import {
     Input,
     IconButton,
     useColorModeValue,
+    Image,
   } from '@chakra-ui/react';
   import { ReactNode } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -84,11 +85,10 @@ import {
             spacing={8}>
             <Stack spacing={6}>
               <Box>
-                <Logo color={useColorModeValue('gray.700', 'white')} />
+                <Image objectFit={'cover'}
+                rounded={'lg'}
+                 src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKgHIi3kFm58QXqi4E1JZScbG9RSkXGgs5uGb9iu1OXC3bnKbLCU3hWafR9zIZkiQ0_dA&usqp=CAU' w="150px" h="80px"  />
               </Box>
-              <Text fontSize={'sm'}>
-                © 2022 Chakra Templates. All rights reserved
-              </Text>
               <Stack direction={'row'} spacing={6}>
                 <SocialButton label={'Twitter'} href={'#'}>
                   <FaTwitter />

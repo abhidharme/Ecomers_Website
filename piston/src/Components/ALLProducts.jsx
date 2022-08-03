@@ -23,7 +23,7 @@ export const AllProducts = () => {
       dispatch(fetchProducts())
     },[])
 
-  console.log(loading)
+  // console.log(loading)
 
 
   return (
