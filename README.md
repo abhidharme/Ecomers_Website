@@ -9,6 +9,7 @@ It is a web application to buy cloths , jwellary , electronics , and shoes etc p
 - Ecommers website to buy produts online.
 - Users can authenticate using signup and login.
 - User can able to see his name at profile section in Navbar.
+- Pagination
 - Products pages added  with sorting and filtering functionalities added. 
 - View the products details by clicking the product.
 - Add to cart option is available with increment and decrement quantity of products.
