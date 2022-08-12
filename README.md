@@ -29,7 +29,7 @@ React | Redux | Javascript | HTML | CSS | Chakra-ui | Redux-thunk
 - Orders Page
 
 ### Live project link
-[https://ecomers-website.netlify.app/](https://ecomers-website.netlify.app/)
+[https://piston-kohl.vercel.app/](https://piston-kohl.vercel.app/)
 
 ### Thank you note
 Thank you all who is giving precious time to visit this little creative project which is made with lot of efforts.
