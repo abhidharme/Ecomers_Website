@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch , useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchProdCategory } from '../../Redux/Products_Category/action';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import { Box , HStack  , Select ,Stack , Text , Heading , Image , useColorModeValue , Center , Flex , } from '@chakra-ui/react';
+import { Box, Select, Stack, Text, Heading, Image, useColorModeValue, Center, Flex, } from '@chakra-ui/react';
 import Jacket_Filter from '../Filters/Jacket_Filter';
 import Footer from '../Footer';
 import LoadingCategory from '../LoadingCategory';
@@ -12,104 +12,104 @@ import LoadingCategory from '../LoadingCategory';
 
 export const Jacket = () => {
 
-const {prod_category:products} = useSelector((store)=>store.prodcategory)
-const [dset , setDset] = useState();
-
-  
-const dispatch = useDispatch()
-  useEffect(()=>{
-      let params ={
-        category: "Jacket",
-      } 
-      dispatch(fetchProdCategory(params))
-     },[])
+  const { prod_category: products } = useSelector((store) => store.prodcategory)
+  const [dset, setDset] = useState();
 
 
-     const sortarr = (e) =>{
-        let d = e.target.value;
-      
-        let updated = products.sort((a,b)=>{
-        if(d === "asc"){
-          return a.price - b.price;
-        }
-        else if(d === "desc"){
-          return b.price - a.price;
-        }
-        else if(d === "A - Z"){
-          if (a.title > b.title)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    let params = {
+      category: "Jacket",
+    }
+    dispatch(fetchProdCategory(params))
+  }, [])
+
+
+  const sortarr = (e) => {
+    let d = e.target.value;
+
+    let updated = products.sort((a, b) => {
+      if (d === "asc") {
+        return a.price - b.price;
+      }
+      else if (d === "desc") {
+        return b.price - a.price;
+      }
+      else if (d === "A - Z") {
+        if (a.title > b.title)
           return 1;
-          if (a.title < b.title)
+        if (a.title < b.title)
           return -1;
         return a.title - b.title
-      
-        }
-        else if(d === "rate"){
-          return b.rating - a.rating;
-        }
-      })
-      
-      setDset([...updated]);
-      
-         // console.log("updated",updated);
-      
-       }
-     
 
-   
+      }
+      else if (d === "rate") {
+        return b.rating - a.rating;
+      }
+    })
+
+    setDset([...updated]);
+
+    // console.log("updated",updated);
+
+  }
+
+
+
 
   return (
-     <Box  bg='gray.100'>
-     <Box >
-     <LoadingCategory/>
-     <Navbar/></Box>
-     <Box> <Flex spacing='0px'>
-     <Box width="20%" bg={useColorModeValue('gray.50', 'gray.900')}
-     color={useColorModeValue('gray.700', 'gray.200')}   >
-     <Jacket_Filter/>
-     </Box>
-     <Box w='80%'  bg='blue.50' >
-       <Center w="100%" h="50px" bg="red.300">
-       <Select onChange={sortarr}>
-       <option value="">Sort By</option>
-             <option value='asc'>Price:Low-High</option>
-             <option value='desc'>Price:High to low</option>
-             <option value="rate">Rating: High to low</option>
-             <option value="A - Z">A-Z</option>
-         </Select>
-       </Center> 
-       <Box>
-      <Stack display={{ md: "flex" }} flexDirection={{ md: "row" }}>
-        <Box bg={useColorModeValue('gray.50', 'gray.900')}
-        color={useColorModeValue('gray.700', 'gray.200')} >
-      <Flex flexWrap="wrap" justifyContent="space-around" >
-        {products.map((product,i)=>{
-          return (
-            <ProductSimple
-            key={i}
-            id={product.id}
-            image={product.image}
-            title={product.title}
-            price={product.price}/>
-          )
-        })}
-      </Flex>
+    <Box bg='gray.100'>
+      <Box >
+        <LoadingCategory />
+        <Navbar /></Box>
+      <Box> <Flex spacing='0px'>
+        <Box width="20%" bg={useColorModeValue('gray.50', 'gray.900')}
+          color={useColorModeValue('gray.700', 'gray.200')}   >
+          <Jacket_Filter />
         </Box>
-    </Stack>
+        <Box w='80%' bg='blue.50' >
+          <Center w="100%" h="50px" bg="red.300">
+            <Select onChange={sortarr}>
+              <option value="">Sort By</option>
+              <option value='asc'>Price:Low-High</option>
+              <option value='desc'>Price:High to low</option>
+              <option value="rate">Rating: High to low</option>
+              <option value="A - Z">A-Z</option>
+            </Select>
+          </Center>
+          <Box>
+            <Stack display={{ md: "flex" }} flexDirection={{ md: "row" }}>
+              <Box bg={useColorModeValue('gray.50', 'gray.900')}
+                color={useColorModeValue('gray.700', 'gray.200')} >
+                <Flex flexWrap="wrap" justifyContent="space-around" >
+                  {products.map((product, i) => {
+                    return (
+                      <ProductSimple
+                        key={i}
+                        id={product.id}
+                        image={product.image}
+                        title={product.title}
+                        price={product.price} />
+                    )
+                  })}
+                </Flex>
+              </Box>
+            </Stack>
+          </Box>
+        </Box>
+      </Flex>
+      </Box>
+      <Box><Footer /></Box>
     </Box>
-     </Box>
-   </Flex>
-   </Box>
-     <Box><Footer/></Box>
-     </Box>
   )
 }
 
 
 
-function ProductSimple({key ,id, image, title , price}) {
+function ProductSimple({ key, id, image, title, price }) {
   return (
     <Center py={12}>
-    <Link style={{textDecoration:"none" }} to={`/details/${id}`} > <Box
+      <Link style={{ textDecoration: "none" }} to={`/details/${id}`} > <Box
         role={'group'}
         p={6}
         maxW={'330px'}

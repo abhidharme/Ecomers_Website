@@ -86,7 +86,7 @@ export default function Footer() {
           <Stack spacing={6}>
             <Box>
               <Image objectFit={'cover'}
-              borderRadius='full'
+                borderRadius='full'
                 src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFmfbD6sQJK9voNucCp4HYTU_7LfZd72LffQ&usqp=CAU' w="50px" h="50px" />
             </Box>
             <Stack direction={'row'} spacing={6}>

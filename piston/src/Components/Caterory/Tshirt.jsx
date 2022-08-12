@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProdCategory } from '../../Redux/Products_Category/action';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import { Box, HStack, Select, Stack, Text, Heading, Image, useColorModeValue, Center, Flex, } from '@chakra-ui/react';
+import { Box, Select, Stack, Text, Heading, Image, useColorModeValue, Center, Flex, } from '@chakra-ui/react';
 import T_Filter from '../Filters/T_Filter';
 import Footer from '../Footer';
 import LoadingCategory from '../LoadingCategory';

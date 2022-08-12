@@ -7,7 +7,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -56,52 +55,52 @@ export const Cart = () => {
         <Navbar /></Box>
       <Box>
         <Box>
-{
-        cart.length == 0 ? <ZeroCartItems/> :
-          <Table>
-            <Thead>
-              <Tr >
-                <Th>Item Image</Th>
-                <Th>Name</Th>
-                <Th>Total Quantity</Th>
-                <Th>Total Price</Th>
-                <Th>Remove</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {
-               cart.map((el) => (
-                  <Tr key={el.id} >
-                    <Link to={`/details/${el.id}`} ><td>
-                      <Image
-                        rounded={'lg'}
-                        height={150}
-                        width={150}
-                        objectFit={'contain'}
-                        src={el.currentProduct.image}
-                      />
-                    </td></Link>
-                    <Td><h5>{el.currentProduct.title}</h5></Td>
-                    <Td>
-                      <Box>
-                        <Flex>
-                          {el.quantity != 1 ? <Box><Button borderTopRightRadius="0" borderBottomRightRadius="0" onClick={() => DecreQtyItem(el.id)}  ><MinusIcon /></Button></Box> : <Box><Button isDisabled borderTopRightRadius="0" borderBottomRightRadius="0" onClick={() => DecreQtyItem(el.id)}  ><MinusIcon /></Button></Box>}
-                          <Box><Button as={"Text"} borderRadius="0">{el.quantity}</Button></Box>
-                          <Box><Button borderTopLeftRadius="0" borderBottomLeftRadius="0" onClick={() => AddQtyItem(el.id)}><AddIcon /></Button></Box>
-                        </Flex>
-                      </Box>
-                    </Td>
-                    <Td><h5>${el.currentProduct.price * el.quantity}</h5></Td>
-                    <Td ><Button onClick={() => removeItem(el.id)}
-                    >
-                      <DeleteIcon />
-                    </Button></Td>
+          {
+            cart.length == 0 ? <ZeroCartItems /> :
+              <Table>
+                <Thead>
+                  <Tr >
+                    <Th>Item Image</Th>
+                    <Th>Name</Th>
+                    <Th>Total Quantity</Th>
+                    <Th>Total Price</Th>
+                    <Th>Remove</Th>
                   </Tr>
-                ))
-              }
-            </Tbody>
-          </Table>
-            }
+                </Thead>
+                <Tbody>
+                  {
+                    cart.map((el) => (
+                      <Tr key={el.id} >
+                        <Link to={`/details/${el.id}`} ><td>
+                          <Image
+                            rounded={'lg'}
+                            height={150}
+                            width={150}
+                            objectFit={'contain'}
+                            src={el.currentProduct.image}
+                          />
+                        </td></Link>
+                        <Td><h5>{el.currentProduct.title}</h5></Td>
+                        <Td>
+                          <Box>
+                            <Flex>
+                              {el.quantity != 1 ? <Box><Button borderTopRightRadius="0" borderBottomRightRadius="0" onClick={() => DecreQtyItem(el.id)}  ><MinusIcon /></Button></Box> : <Box><Button isDisabled borderTopRightRadius="0" borderBottomRightRadius="0" onClick={() => DecreQtyItem(el.id)}  ><MinusIcon /></Button></Box>}
+                              <Box><Button as={"Text"} borderRadius="0">{el.quantity}</Button></Box>
+                              <Box><Button borderTopLeftRadius="0" borderBottomLeftRadius="0" onClick={() => AddQtyItem(el.id)}><AddIcon /></Button></Box>
+                            </Flex>
+                          </Box>
+                        </Td>
+                        <Td><h5>${el.currentProduct.price * el.quantity}</h5></Td>
+                        <Td ><Button onClick={() => removeItem(el.id)}
+                        >
+                          <DeleteIcon />
+                        </Button></Td>
+                      </Tr>
+                    ))
+                  }
+                </Tbody>
+              </Table>
+          }
         </Box>
         <Box><Checkout cart={cart} /></Box>
       </Box>

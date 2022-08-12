@@ -1,54 +1,48 @@
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    useDisclosure,
-    Text,
-    Center,
-    CircularProgress
-  } from '@chakra-ui/react'
-  import React from 'react'
-  import {useSelector} from "react-redux"
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  useDisclosure,
+  Center,
+  CircularProgress
+} from '@chakra-ui/react'
+import React from 'react'
+import { useSelector } from "react-redux"
 
-  function LoadingCategory() {
-    const OverlayOne = () => (
-
-      
-
-      <ModalOverlay
-        bg='blackAlpha.300'
-        backdropFilter='blur(10px) hue-rotate(90deg)'
-      />
-    )
-    
-  
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const [overlay, setOverlay] = React.useState(<OverlayOne />)
-
-  const {loading} = useSelector((store)=>store.prodcategory)
-  const  {loading:load}  = useSelector((store) => store.singleprod)
+function LoadingCategory() {
+  const OverlayOne = () => (
 
 
-  
-    return (
-      <>
-        {
-             loading && <Modal isCentered isOpen>
-            <OverlayOne />
-            <ModalContent bg="none" boxShadow={"none"} >
+
+    <ModalOverlay
+      bg='blackAlpha.300'
+      backdropFilter='blur(10px) hue-rotate(90deg)'
+    />
+  )
+
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [overlay, setOverlay] = React.useState(<OverlayOne />)
+
+  const { loading } = useSelector((store) => store.prodcategory)
+  const { loading: load } = useSelector((store) => store.singleprod)
+
+
+
+  return (
+    <>
+      {
+        loading && <Modal isCentered isOpen>
+          <OverlayOne />
+          <ModalContent bg="none" boxShadow={"none"} >
             <Center>
-            <CircularProgress isIndeterminate color='green.300' />
+              <CircularProgress isIndeterminate color='green.300' />
             </Center>
-            </ModalContent>
-          </Modal>
-        }
+          </ModalContent>
+        </Modal>
+      }
 
-      </>
-    )
-  }
-  export default LoadingCategory;
+    </>
+  )
+}
+export default LoadingCategory;

@@ -21,10 +21,21 @@ import { CartCounter } from './CartCounter';
 import { BsCart4 } from "react-icons/bs"
 import { Link as RouteLink, useNavigate } from 'react-router-dom';
 import { Profile } from './Profile';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { logout } from '../Redux/LoginRedux/action';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
+
+  const { token } = useSelector((state) => state.login);
+const [log,setLog] = useState('Login')
+useEffect(()=>{
+  if(token){
+    setLog('Logout')
+  }
+},[token])
+
+
   const { colorMode, toggleColorMode } = useColorMode();
   //const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
@@ -84,7 +95,7 @@ export default function Navbar() {
                   <br />
                   <MenuDivider />
                   <MenuItem onClick={() => navi("/orders")} >Your Orders</MenuItem>
-                  <MenuItem onClick={() => { dispatch(logout()); navi('/login') }}>Logout</MenuItem>
+                  <MenuItem onClick={() => { dispatch(logout()); navi('/login') }}>{log}</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
