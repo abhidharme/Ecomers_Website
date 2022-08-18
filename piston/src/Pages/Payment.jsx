@@ -45,21 +45,21 @@ function Payment() {
           console.log('Success', paymentRequest);
         }}
         onPaymentAuthorized={paymentData => {
-            console.log('Payment Authorised Success', paymentData)
-            return { transactionState: 'SUCCESS'}
-          }
+          console.log('Payment Authorised Success', paymentData)
+          return { transactionState: 'SUCCESS' }
+        }
         }
         onPaymentDataChanged={paymentData => {
-            console.log('On Payment Data Changed', paymentData)
-            return { }
-          }
+          console.log('On Payment Data Changed', paymentData)
+          return {}
+        }
         }
         existingPaymentMethodRequired='false'
         buttonColor='black'
         buttonType='Buy'
       />
     </div>
-    
+
   );
 }
 

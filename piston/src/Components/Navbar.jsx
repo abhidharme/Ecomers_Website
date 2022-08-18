@@ -21,19 +21,19 @@ import { CartCounter } from './CartCounter';
 import { BsCart4 } from "react-icons/bs"
 import { Link as RouteLink, useNavigate } from 'react-router-dom';
 import { Profile } from './Profile';
-import { useDispatch , useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Redux/LoginRedux/action';
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
 
   const { token } = useSelector((state) => state.login);
-const [log,setLog] = useState('Login')
-useEffect(()=>{
-  if(token){
-    setLog('Logout')
-  }
-},[token])
+  const [log, setLog] = useState('Login')
+  useEffect(() => {
+    if (token) {
+      setLog('Logout')
+    }
+  }, [token])
 
 
   const { colorMode, toggleColorMode } = useColorMode();

@@ -16,7 +16,7 @@ const get_Single_Data_Failure = (Payload) => ({
     Payload
 })
 
- export const getSingleProduct = (id) => (dispatch) => {
+export const getSingleProduct = (id) => (dispatch) => {
     dispatch(get_Single_Data_Request());
     axios.get(`https://ecom-data-project.herokuapp.com/prods/${id}`)
         .then((res) => dispatch(get_Single_Data_Success(res.data)))

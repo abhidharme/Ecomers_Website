@@ -28,7 +28,7 @@ export const Profile = () => {
 
   return (
     <div>
-  {Object.keys(profile).length != 0 ? <Text>{profile.name}</Text> : <Text>Welcome Guest</Text>}
+      {Object.keys(profile).length != 0 ? <Text>{profile.name}</Text> : <Text>Welcome Guest</Text>}
       <Text>{profile.email}</Text>
     </div>
   )

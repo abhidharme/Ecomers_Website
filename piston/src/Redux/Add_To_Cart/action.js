@@ -15,11 +15,11 @@ const add_cart_Failure = (Payload) => ({
     Payload
 })
 
- const addProduct = (data) => (dispatch) => {
+const addProduct = (data) => (dispatch) => {
     dispatch(add_cart_Request());
     axios.post(`https://cartdetailsdata.herokuapp.com/cart`, data)
         .then((r) => dispatch(add_cart_Success(r.data)))
-        .then((res)=>dispatch(fetchCartData()))
+        .then((res) => dispatch(fetchCartData()))
         .catch((e) => dispatch(add_cart_Failure(e.message)))
 }
 
@@ -60,13 +60,14 @@ const delete_cart_Failure = (Payload) => ({
     Payload
 })
 
-const deleteProduct = (id)=> (dispatch)=>{
+const deleteProduct = (id) => (dispatch) => {
     dispatch(delete_cart_Request());
     axios.delete(`https://cartdetailsdata.herokuapp.com/cart/${id}`)
-    .then((res)=>{
-    dispatch(delete_cart_Success(res.data))})
-    .then(()=>dispatch(fetchCartData()))
-    .catch((err)=>dispatch(delete_cart_Failure(err.data)))
+        .then((res) => {
+            dispatch(delete_cart_Success(res.data))
+        })
+        .then(() => dispatch(fetchCartData()))
+        .catch((err) => dispatch(delete_cart_Failure(err.data)))
 }
 
 
@@ -83,14 +84,14 @@ const patch_cart_Failure = () => ({
     type: types.PATCH_CART_FAILURE
 })
 
- const patchProduct = (id,data) => (dispatch) => {
+const patchProduct = (id, data) => (dispatch) => {
     dispatch(patch_cart_Request());
     axios.patch(`https://cartdetailsdata.herokuapp.com/cart/${id}`,
-    {quantity:`${data}`}
+        { quantity: `${data}` }
     )
         .then((r) => dispatch(patch_cart_Success(r.data)))
-        .then((res)=>dispatch(fetchCartData()))
+        .then((res) => dispatch(fetchCartData()))
         .catch((e) => dispatch(patch_cart_Failure(e.message)))
 }
 
-export {addProduct , fetchCartData , deleteProduct , patchProduct}
+export { addProduct, fetchCartData, deleteProduct, patchProduct }

@@ -1,14 +1,14 @@
 import * as types from "./actionTypes";
 
 const initialState = {
-       loading : false,
-       order: [],
-       error: false
-} 
+    loading: false,
+    order: [],
+    error: false
+}
 
-export const orderreducer = (store = initialState  ,{type , Payload}) =>{
-      switch(type){
-            case types.FETCH_ORDER_REQUEST:
+export const orderreducer = (store = initialState, { type, Payload }) => {
+    switch (type) {
+        case types.FETCH_ORDER_REQUEST:
             return {
                 ...store,
                 loading: true,
@@ -18,7 +18,7 @@ export const orderreducer = (store = initialState  ,{type , Payload}) =>{
             return {
                 ...store,
                 loading: false,
-                order:Payload,
+                order: Payload,
                 error: false
             }
         case types.FETCH_ORDER_FAILURE:
@@ -27,7 +27,7 @@ export const orderreducer = (store = initialState  ,{type , Payload}) =>{
                 loading: false,
                 error: true
             }
-    default:
-        return store;
-      }
+        default:
+            return store;
+    }
 }
